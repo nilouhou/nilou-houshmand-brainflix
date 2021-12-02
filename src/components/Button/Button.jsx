@@ -1,6 +1,10 @@
+import './Button.scss'
+
 const Button = ({text}) => {
     return (
-        <button className="primary-button" type="submit">{text}</button>
+        <button className="primary-button" type="submit">
+          {text}
+        </button>
     )
 }
 

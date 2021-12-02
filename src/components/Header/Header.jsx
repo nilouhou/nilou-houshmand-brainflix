@@ -1,5 +1,11 @@
-import Button from "../Button/Button"
+import Button from "../Button/Button";
+import "./Header.scss";
 import logo from "../../assets/images/logo/brainflix-logo.svg";
+import avatar from "../../assets/images/Mohan-muruge.jpg";
+
+
+
+
 
 const Header = () => {
 	return (
@@ -9,12 +15,14 @@ const Header = () => {
 				<img src={logo} alt="logo" />
 			</div>
 			<div className="header__search">
-               <form action="">
-				   <input type="text" name="search"  />
-				   <img src="" alt="" />
+               <form className="header__form">
+				   <input className="header__input" type="text" name="search"  />
 			   </form>
+			   <div class="header__avatar">
+              		<img src={avatar} alt="mohan muruge" />
+               </div>
 			</div>
-			<Button text="UPLOAD" icon="" />
+			<Button className="header__button" text="UPLOAD" />
 		</section>		
 		</>
 	);

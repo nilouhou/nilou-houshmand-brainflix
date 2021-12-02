@@ -1,0 +1,36 @@
+/** Global StyleSheet =============================
+ Reset, Typography
+ ============================================== **/
+
+@use "./variables" as *;
+@use "./mixins";
+@use "./typography";
+
+/* Reset */
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	font-family: "AvenirNext LT Pro", Helvetica, sans-serif;
+	@include mixins.body-mobile;
+	@include mixins.tablet {
+		@include mixins.body-tablet;
+	}
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+	margin: 0;
+}
+
+a {
+	text-decoration: none;
+}
