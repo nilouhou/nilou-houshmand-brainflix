@@ -7,8 +7,8 @@
 	@include mixins.flex-column-center;
 
 	@include mixins.tablet {
-		@include mixins.flex-row;
-		align-items: flex-end;
+		@include mixins.flex-row-y-center;
+		justify-content: space-between;
 	}
 
 	&__logo {
@@ -17,14 +17,30 @@
 	}
 
 	&__search {
-		width: 100%;
-		margin: $mobile-gap 0;
 		display: flex;
+		flex-wrap: wrap;
+
+		@include mixins.tablet {
+			flex-wrap: nowrap;
+			align-items: center;
+			justify-content: space-between;
+			width: 70%;
+		}
+
+		@include mixins.desktop {
+			width: 50%;
+		}
 	}
 
 	&__form {
 		font-family: "AvenirNext LT Pro", Helvetica, sans-serif;
-		width: 100%;
+		width: 80%;
+		margin: $mobile-gap 0;
+
+		@include mixins.tablet {
+			width: 50%;
+			margin: 0;
+		}
 	}
 
 	&__input {
@@ -35,20 +51,19 @@
 		width: 100%;
 		border-radius: 4px;
 		border: 1px solid $secondary-medium;
-		margin-bottom: 4px;
 
 		&:focus {
 			outline: none;
 			border: 2px solid $primary-cta;
 		}
-		@include mixins.tablet {
-			padding: 1rem;
-			min-height: 3rem;
-		}
 	}
 
 	&__avatar {
-		margin-left: $mobile-gap;
+		margin: $mobile-gap 0 0 $mobile-gap;
+		@include mixins.tablet {
+			order: 3;
+			margin-top: 0;
+		}
 	}
 
 	&__avatar,

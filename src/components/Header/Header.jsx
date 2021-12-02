@@ -21,8 +21,9 @@ const Header = () => {
 			   <div class="header__avatar">
               		<img src={avatar} alt="mohan muruge" />
                </div>
+			   <Button className="header__button" text="UPLOAD" />
 			</div>
-			<Button className="header__button" text="UPLOAD" />
+			
 		</section>		
 		</>
 	);
