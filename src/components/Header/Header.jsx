@@ -18,7 +18,7 @@ const Header = () => {
                <form className="header__form">
 				   <input className="header__input" type="text" name="search"  />
 			   </form>
-			   <div class="header__avatar">
+			   <div className="header__avatar">
               		<img src={avatar} alt="mohan muruge" />
                </div>
 			   <Button className="header__button" text="UPLOAD" />
