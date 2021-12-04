@@ -1,0 +1,8 @@
+.video-item {
+	display: flex;
+	&__img {
+		img {
+			width: 200px;
+		}
+	}
+}

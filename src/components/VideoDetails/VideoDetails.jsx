@@ -25,11 +25,14 @@ import "./VideoDetails.scss";
 const VideoDetails = (props) => {
 	const {title,channel,image,description,views,likes,duaration,video,timestamp,comments,id} = props.selected;
 	return (
-		<div>
-			<p> {title}</p>
-			<p>{channel}</p>
-			<img className="video-image" src={image} alt={title} />
-		</div>
+		
+          <div className="video-details">
+			  <h1 className="video-details__title">{title}</h1>
+			
+		  </div>
+		
+		
+
 	);
 };
 
