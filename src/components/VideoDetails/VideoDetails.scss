@@ -3,21 +3,29 @@
 @use "../../styles/partials/mixins";
 
 .video-details {
-	padding: 0 $mobile-gap;
+	padding: 0;
+	min-width: 60%;
+	@include mixins.desktop {
+		border-right: 1px solid $secondary-medium;
+	}
+
+	&__title {
+		padding-left: $mobile-gap;
+	}
 
 	&__info {
 		display: flex;
 		align-items: baseline;
 		border-top: 1px solid $secondary-medium;
 		border-bottom: 1px solid $secondary-medium;
-		padding: $mobile-gap 0;
+		padding: $mobile-gap;
 		margin-bottom: $mobile-gap;
 
 		@include mixins.tablet {
 			border-top: none;
 			justify-content: space-between;
 			align-items: baseline;
-			padding: 0;
+			padding: 0 $mobile-gap;
 		}
 	}
 
@@ -29,7 +37,7 @@
 			flex: 0 auto;
 			align-items: baseline;
 			h3 {
-				padding: 0.5rem;
+				padding: 0.5rem 0;
 				margin-right: 0.5rem;
 			}
 		}
@@ -54,5 +62,18 @@
 
 	&__icon {
 		margin-right: 0.5rem;
+	}
+
+	&__summery {
+		padding: 0 $mobile-gap;
+	}
+
+	&__form {
+		margin: $mobile-gap-component 0;
+		padding: 0 $mobile-gap;
+
+		@include mixins.tablet {
+			margin-top: $tablet-gap-component;
+		}
 	}
 }

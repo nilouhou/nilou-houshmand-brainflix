@@ -6,5 +6,7 @@
 	flex-direction: column;
 	@include mixins.desktop {
 		@include mixins.flex-row;
+		max-width: 80%;
+		margin: 0 auto;
 	}
 }

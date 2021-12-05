@@ -4,13 +4,13 @@ import "./CommentItem.scss";
 const CommentItem = (props) => {
 	console.log(props);
 	return (
-		<div className="comments__item">
-			<div className="comments__avatar"></div>
-			<div className="comments__message">
-				<p className="comments__name">
-					<span className="comments__time"></span>
+		<div className="comments-item">
+			<div className="comments-item__avatar"></div>
+			<div className="comments-item__message">
+				<p className="comments-item__name">
+					<span className="comments-item__time"></span>
 				</p>
-				<p className="comments__comment">
+				<p className="comments-item__comment">
 					{props.comments.map((com) => {
 						return (
 							<div>

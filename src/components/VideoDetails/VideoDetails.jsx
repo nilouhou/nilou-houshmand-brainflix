@@ -1,5 +1,6 @@
 import React from "react";
 import CommentItem from "../CommentItem/CommentItem";
+import Form from "../Form/Form";
 
 import "./VideoDetails.scss";
 import viewIcon from "../../assets/images/icons/views.svg";
@@ -31,7 +32,11 @@ const VideoDetails = (props) => {
 			</div>
 			<div className="video-details__summery">{description}</div>
 
-			<div className="comments">
+			<div className="video-details__form">
+				<h3>{Object.keys(comments).length} Comments</h3>
+				<Form />
+			</div>
+			<div className="video-details__comments">
 				<CommentItem comments={comments} />
 			</div>
 		</div>

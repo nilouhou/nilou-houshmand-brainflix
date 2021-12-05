@@ -1,0 +1,84 @@
+/* Form StyelSheet */
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins";
+
+.form-wrapper {
+	width: 100%;
+	@include mixins.flex-row;
+
+	@include mixins.tablet {
+		align-items: flex-end;
+	}
+
+	&__avatar {
+		margin-right: 1rem;
+
+		@include mixins.tablet {
+			margin-bottom: 6px;
+		}
+	}
+
+	&__avatar,
+	&__avatar img {
+		border-radius: 50%;
+		background-color: $secondary-medium;
+		width: 2.25rem;
+		height: 2.25rem;
+		object-fit: cover;
+		@include mixins.tablet {
+			width: 3rem;
+			height: 3rem;
+		}
+	}
+}
+
+.form {
+	font-family: "AvenirNext LT Pro", Helvetica, sans-serif;
+	width: 100%;
+	@include mixins.flex-col;
+
+	@include mixins.tablet {
+		@include mixins.flex-row;
+		align-items: flex-end;
+
+		&__button-wrapper {
+			margin-bottom: 0.5rem;
+			margin-left: 1rem;
+		}
+	}
+
+	&__label {
+		text-transform: uppercase;
+		display: block;
+		@include mixins.label-mobile;
+		color: $primary-medium;
+
+		@include mixins.tablet {
+			width: 80%;
+		}
+	}
+
+	&__textarea {
+		font-family: inherit;
+		font-size: 0.8125rem;
+		padding: 0.75rem;
+		min-height: 2.25rem;
+		width: 100%;
+		border-radius: 4px;
+		border: 1px solid $secondary-medium;
+		background-color: $secondary-light;
+
+		&:focus {
+			outline: none;
+			border: 1px solid $primary-cta;
+		}
+		@include mixins.tablet {
+			padding: 0.25rem;
+			min-height: 2rem;
+		}
+	}
+
+	&__textarea {
+		resize: none;
+	}
+}

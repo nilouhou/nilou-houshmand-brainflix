@@ -2,24 +2,15 @@
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/mixins";
 
-.comments {
-	@include mixins.tablet {
-		width: 80%;
-	}
-	@include mixins.desktop {
-		width: 50%;
-	}
-	margin-top: $mobile-gap-component;
+.comments-item {
+	display: flex;
+	border-top: 1px solid $secondary-medium;
+	padding: $mobile-gap;
 
-	&__item {
-		display: flex;
-		border-top: 1px solid $secondary-medium;
-		padding: $mobile-gap 0;
-
-		&:last-child {
-			border-bottom: 1px solid $secondary-medium;
-		}
+	&:last-child {
+		border-bottom: 1px solid $secondary-medium;
 	}
+
 	/*Comment avatar*/
 	&__avatar {
 		margin-right: 1rem;
