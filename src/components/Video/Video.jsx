@@ -2,6 +2,7 @@ import React from "react";
 import "./Video.scss";
 
 const Video = (props) => {
+	console.log("vid",props)
 	return (
 		<div className="video-container">
 			<video

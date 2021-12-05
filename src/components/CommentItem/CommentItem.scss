@@ -1,0 +1,55 @@
+/* Commments Stylesheet*/
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins";
+
+.comments {
+	@include mixins.tablet {
+		width: 80%;
+	}
+	@include mixins.desktop {
+		width: 50%;
+	}
+	margin-top: $mobile-gap-component;
+
+	&__item {
+		display: flex;
+		border-top: 1px solid $secondary-medium;
+		padding: $mobile-gap 0;
+
+		&:last-child {
+			border-bottom: 1px solid $secondary-medium;
+		}
+	}
+	/*Comment avatar*/
+	&__avatar {
+		margin-right: 1rem;
+	}
+
+	&__avatar,
+	&__avatar img {
+		border-radius: 50%;
+		background-color: $secondary-medium;
+		width: 2.25rem;
+		height: 2.25rem;
+		object-fit: cover;
+		@include mixins.tablet {
+			width: 3rem;
+			height: 3rem;
+		}
+	}
+
+	/* Comment text */
+	&__message {
+		flex: 1;
+	}
+
+	&__name {
+		display: flex;
+		justify-content: space-between;
+		font-weight: 600;
+	}
+	&__time {
+		font-weight: 400;
+		color: $primary-medium;
+	}
+}

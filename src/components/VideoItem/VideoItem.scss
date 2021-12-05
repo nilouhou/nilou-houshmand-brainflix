@@ -1,8 +1,25 @@
+/* Video items on right sidebar*/
+@use "../../styles/partials/variables" as *;
 .video-item {
-	display: flex;
-	&__img {
-		img {
-			width: 200px;
-		}
+	margin-bottom: $mobile-gap;
+
+	&__card {
+		display: flex;
+	}
+
+	&__img,
+	img {
+		border-radius: 4px;
+		width: 9.375rem;
+		height: 5.25rem;
+		background-color: $secondary-medium;
+		object-fit: cover;
+	}
+
+	&__content {
+		margin-left: $mobile-gap;
+	}
+	&__title {
+		padding-top: 0;
 	}
 }

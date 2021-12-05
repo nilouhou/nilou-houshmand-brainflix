@@ -1,0 +1,7 @@
+/* Video Details Stylesheet*/
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins";
+
+.video-details {
+	padding: 0 $mobile-gap;
+}

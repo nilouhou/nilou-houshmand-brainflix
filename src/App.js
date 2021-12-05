@@ -12,28 +12,31 @@ import "./App.scss";
 class App extends React.Component {
 	state = {
 		videos: videosData,
-		selected: videoDetails[0],
+		selectedVideo: videoDetails[0],
 	};
 
-	clickHandler = (video) => {
-		console.log("from app", video);
+	handleVideoSelect = (id) => {
 		this.setState({
-			selected: video,
+			selectedVideo: videoDetails.find((video) => video.id === id),
 		});
 	};
 
 	render() {
-		const filterNav = this.state.videos.filter(
-			(video) => video.id !== this.state.selected.id
+		// const filterNav = this.state.videos.filter(
+		// 	(video) => video.id !== this.state.selected.id
+		// );
+		const filterNav = videosData.filter(
+			(video) => video.id !== this.state.selectedVideo.id
 		);
 		return (
 			<>
 				<Header />
 
-				<Video selected={this.state.selected} />
+				<Video selected={this.state.selectedVideo} />
 				<div className="flex-wrap">
-					<VideoDetails selected={this.state.selected} />
-					<VideoNav videos={filterNav} clickHandler={this.clickHandler} />
+					<VideoDetails selected={this.state.selectedVideo} />
+
+					<VideoNav videos={filterNav} onVideoSelect={this.handleVideoSelect} />
 				</div>
 			</>
 		);

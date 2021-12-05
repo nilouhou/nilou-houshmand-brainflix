@@ -3,21 +3,24 @@ import VideoItem from "../VideoItem/VideoItem";
 import "./VideoNav.scss";
 
 const VideoNav = (props) => {
+	return (
+		<div className="videoList">
+			<ul>
+				{props.videos.map((video) => {
+					return (
+						<VideoItem
+							key={video.id}
+							id={video.id}
+							title={video.title}
+							channel={video.channel}
+							image={video.image}
+							onVideoSelect={props.onVideoSelect}
+						/>
+					);
+				})}
+			</ul>
+		</div>
+	);
+};
 
-    
-    
-    return (
-        <div>
-            <ul>
-             {props.videos.map( video =>{
-                 return <li key={video.id} onClick={()=>props.clickHandler(video)}><VideoItem video={video}/></li>
-                 
-             }
-
-             )}
-            </ul>
-        </div>
-    )
-}
-
-export default VideoNav
+export default VideoNav;

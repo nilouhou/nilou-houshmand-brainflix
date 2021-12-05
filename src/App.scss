@@ -1,5 +1,10 @@
 @use "./styles/partials/global" as *;
+@use "./styles/partials/mixins";
 
 .flex-wrap {
 	display: flex;
+	flex-direction: column;
+	@include mixins.desktop {
+		@include mixins.flex-row;
+	}
 }
