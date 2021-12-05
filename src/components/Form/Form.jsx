@@ -1,4 +1,5 @@
 import React from "react";
+import Button from "../Button/Button";
 import "./Form.scss";
 import avatar from "../../assets/images/Mohan-muruge.jpg";
 
@@ -20,9 +21,12 @@ const Form = () => {
 					></textarea>
 				</label>
 				<div className="form__button-wrapper">
-					<button className="primary-button" type="submit" disabled>
-						Comment
-					</button>
+					<Button
+						cname="form__button primary-button"
+						text="comment"
+						type="submit"
+						disabled
+					/>
 				</div>
 			</form>
 		</div>

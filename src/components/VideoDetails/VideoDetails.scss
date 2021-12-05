@@ -73,7 +73,7 @@
 		padding: 0 $mobile-gap;
 
 		@include mixins.tablet {
-			margin-top: $tablet-gap-component;
+			margin-top: 5rem;
 		}
 	}
 }

@@ -81,4 +81,16 @@
 	&__textarea {
 		resize: none;
 	}
+
+	&__button {
+		position: relative;
+		width: 10rem;
+		&:before {
+			content: url("../../assets/images/icons/add_comment.svg");
+			position: absolute;
+			top: 6px;
+			left: 10px;
+			transform: scale(0.7);
+		}
+	}
 }

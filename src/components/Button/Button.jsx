@@ -1,11 +1,11 @@
-import './Button.scss'
+import "./Button.scss";
 
-const Button = ({text}) => {
-    return (
-        <button className="primary-button" type="submit">
-          {text}
-        </button>
-    )
-}
+const Button = ({ text, cname }) => {
+	return (
+		<button className={cname} type="submit">
+			{text}
+		</button>
+	);
+};
 
-export default Button
+export default Button;

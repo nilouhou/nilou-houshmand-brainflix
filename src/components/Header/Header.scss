@@ -28,14 +28,25 @@
 		}
 
 		@include mixins.desktop {
-			width: 50%;
+			width: 40%;
 		}
 	}
 
-	&__form {
+	&__search-box {
 		font-family: "AvenirNext LT Pro", Helvetica, sans-serif;
 		width: 80%;
 		margin: $mobile-gap 0;
+		background-color: $secondary-light;
+		display: flex;
+		border-radius: 4px;
+		border: 1px solid $secondary-medium;
+		padding-left: 1rem;
+
+		&:focus,
+		&:hover {
+			outline: none;
+			border: 2px solid $primary-cta;
+		}
 
 		@include mixins.tablet {
 			width: 50%;
@@ -49,13 +60,9 @@
 		padding: 0.75rem;
 		min-height: 2.25rem;
 		width: 100%;
-		border-radius: 4px;
-		border: 1px solid $secondary-medium;
-
-		&:focus {
-			outline: none;
-			border: 2px solid $primary-cta;
-		}
+		background-color: $secondary-light;
+		border: none;
+		outline: none;
 	}
 
 	&__avatar {
@@ -80,8 +87,13 @@
 	}
 
 	&__button {
-		background: url("../../assets/images/icons/upload.svg");
-		background-position: left center;
-		background-repeat: no-repeat;
+		position: relative;
+		&:before {
+			content: url("../../assets/images/icons/upload.svg");
+			top: 6px;
+			left: 10px;
+			position: absolute;
+			transform: scale(0.7);
+		}
 	}
 }
