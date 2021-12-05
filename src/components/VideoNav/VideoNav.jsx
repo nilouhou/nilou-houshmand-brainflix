@@ -5,6 +5,7 @@ import "./VideoNav.scss";
 const VideoNav = (props) => {
 	return (
 		<div className="videoList">
+			<h3 className="videoList__title">Next Videos</h3>
 			<ul>
 				{props.videos.map((video) => {
 					return (

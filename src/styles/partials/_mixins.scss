@@ -4,6 +4,10 @@
 @use "./variables" as *;
 
 /* Flex mixins */
+@mixin flex-col {
+	display: flex;
+	flex-direction: column;
+}
 @mixin flex-column-center {
 	display: flex;
 	flex-direction: column;
@@ -50,7 +54,7 @@
 	font-size: 0.8125rem;
 	line-height: 1.125rem;
 	font-weight: 700;
-	padding: 1.5rem 0 1rem;
+	padding-bottom: 1rem;
 }
 
 @mixin body-mobile {

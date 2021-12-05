@@ -9,20 +9,25 @@ const VideoDetails = (props) => {
 	const { title, channel, description, views, likes, timestamp, comments } =
 		props.selected;
 
+	const formattedDate = new Date(timestamp).toLocaleDateString();
 	return (
 		<div className="video-details">
 			<h1 className="video-details__title">{title}</h1>
 			<div className="video-details__info">
-				<h3>{channel}</h3>
-				<p>{timestamp}</p>
-				<p>
-					<img src={viewIcon} alt="views" />
-					{views}
-				</p>
-				<p>
-					<img src={likeIcon} alt="likes" />
-					{likes}
-				</p>
+				<div className="video-details__channel-wrapper">
+					<h3>{channel}</h3>
+					<p>{formattedDate}</p>
+				</div>
+				<div className="video-details__views-wrapper">
+					<p>
+						<img className="video-details__icon" src={viewIcon} alt="views" />
+						{views}
+					</p>
+					<p>
+						<img className="video-details__icon" src={likeIcon} alt="likes" />
+						{likes}
+					</p>
+				</div>
 			</div>
 			<div className="video-details__summery">{description}</div>
 

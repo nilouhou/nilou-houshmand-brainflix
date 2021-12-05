@@ -2,4 +2,9 @@
 @use "../../styles/partials/mixins";
 .videoList {
 	padding: $mobile-gap;
+
+	&__title {
+		text-transform: uppercase;
+		color: $primary-medium;
+	}
 }
