@@ -1,44 +1,24 @@
 import React from "react";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Header from "./components/Header/Header";
-import VideoNav from "./components/VideoNav/VideoNav";
-import VideoDetails from "./components/VideoDetails/VideoDetails";
-import Video from "./components/Video/Video";
-
-import videoDetails from "./data/video-details.json";
-import videosData from "./data/videos.json";
+import UploadPage from "./pages/UploadPage/UploadPage";
+import VideoPage from "./pages/VideoPage/VideoPage";
 
 import "./App.scss";
 
+export const API_KEY = "38824d59-283f-4a85-abde-56c35ca39090";
+
 class App extends React.Component {
-	state = {
-		videos: videosData,
-		selectedVideo: videoDetails[0],
-	};
-
-	handleVideoSelect = (id) => {
-		this.setState({
-			selectedVideo: videoDetails.find((video) => video.id === id),
-		});
-	};
-
 	render() {
-		// const filterNav = this.state.videos.filter(
-		// 	(video) => video.id !== this.state.selected.id
-		// );
-		const filterNav = videosData.filter(
-			(video) => video.id !== this.state.selectedVideo.id
-		);
 		return (
-			<>
+			<BrowserRouter>
 				<Header />
-
-				<Video selected={this.state.selectedVideo} />
-				<div className="flex-wrap">
-					<VideoDetails selected={this.state.selectedVideo} />
-
-					<VideoNav videos={filterNav} onVideoSelect={this.handleVideoSelect} />
-				</div>
-			</>
+				<Switch>
+					<Route path="/" component={VideoPage} exact />
+					<Route path="/video" component={VideoPage} />
+					<Route path="/upload" component={UploadPage} />
+				</Switch>
+			</BrowserRouter>
 		);
 	}
 }
