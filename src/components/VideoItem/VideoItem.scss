@@ -3,6 +3,7 @@
 @use "../../styles/partials/mixins";
 .video-item {
 	margin-bottom: $mobile-gap;
+	color: $primary-dark;
 
 	&__card {
 		display: flex;

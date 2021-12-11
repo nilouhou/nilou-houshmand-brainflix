@@ -11,37 +11,58 @@ class VideoPage extends React.Component {
 		selectedVideo: null,
 	};
 
-	fetchMovieData() {
-		axios
-			.get(`${API_URL}/videos${API_KEY}`)
-			.then((response) =>
-				this.setState({
-					videos: response.data,
-				})
-			)
-			.catch((err) => console.log(err));
-	}
-
-	fetchMovieDetails(id) {
-		axios.get(`${API_URL}/${id}${API_KEY}`).then((response) =>
+	fetchVideoDetails(id) {
+		axios.get(`${API_URL}/videos/${id}${API_KEY}`).then((response) =>
 			this.setState({
-				selectedVideo: response.data[0],
+				selectedVideo: response.data,
 			})
 		);
 	}
 
 	componentDidMount() {
-		this.fetchMovieData();
+		axios
+			.get(`${API_URL}/videos${API_KEY}`)
+			.then((response) => {
+				this.setState({
+					videos: response.data,
+				});
+
+				return response.data[0].id;
+			})
+			.then((firstVideoId) => {
+				let videoToLoad;
+
+				this.props.match.params.videoId !== undefined
+					? (videoToLoad = this.props.match.params.videoId)
+					: (videoToLoad = firstVideoId);
+
+				this.fetchVideoDetails(videoToLoad);
+			})
+			.catch((err) => console.log(err));
 	}
+
+	componentDidUpdate() {}
 
 	render() {
 		return (
 			<>
-				{/* <Video /> */}
+				{this.state.selectedVideo ? (
+					<Video selected={this.state.selectedVideo} />
+				) : (
+					<p>Loading...</p>
+				)}
+
 				<div className="flex-wrap">
-					hi
-					{/* <VideoDetails />*/}
-					<VideoNav videos={this.state.videos} />
+					{this.state.selectedVideo ? (
+						<VideoDetails selected={this.state.selectedVideo} />
+					) : (
+						<p>Loading...</p>
+					)}
+					{this.state.videos.length ? (
+						<VideoNav videos={this.state.videos} />
+					) : (
+						<p>Loading...</p>
+					)}
 				</div>
 			</>
 		);
