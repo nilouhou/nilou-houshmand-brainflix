@@ -1,6 +1,7 @@
 import React from "react";
 import CommentItem from "../CommentItem/CommentItem";
 import Form from "../Form/Form";
+import { format } from "../../helper/helper";
 
 import "./VideoDetails.scss";
 import viewIcon from "../../assets/images/icons/views.svg";
@@ -10,14 +11,13 @@ const VideoDetails = (props) => {
 	const { title, channel, description, views, likes, timestamp, comments } =
 		props.selected;
 
-	const formattedDate = new Date(timestamp).toLocaleDateString();
 	return (
 		<div className="video-details">
 			<h1 className="video-details__title">{title}</h1>
 			<div className="video-details__info">
 				<div className="video-details__channel-wrapper">
 					<h3>{channel}</h3>
-					<p>{formattedDate}</p>
+					<p>{format(timestamp)}</p>
 				</div>
 				<div className="video-details__views-wrapper">
 					<p>
@@ -33,7 +33,7 @@ const VideoDetails = (props) => {
 			<div className="video-details__summery">{description}</div>
 
 			<div className="video-details__form">
-				<h3>{Object.keys(comments).length} Comments</h3>
+				<h3>{comments.length} Comments</h3>
 				<Form />
 			</div>
 			<div className="video-details__comments">

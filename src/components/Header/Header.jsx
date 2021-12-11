@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import Button from "../Button/Button";
 import "./Header.scss";
 import logo from "../../assets/images/logo/brainflix-logo.svg";
 import avatar from "../../assets/images/Mohan-muruge.jpg";
@@ -27,8 +26,8 @@ const Header = () => {
 					<div className="header__avatar">
 						<img src={avatar} alt="mohan muruge" />
 					</div>
-					<Link to="/upload">
-						<Button cname="header__button primary-button" text="UPLOAD" />
+					<Link to="/upload" className="header__button primary-button">
+						UPLOAD
 					</Link>
 				</div>
 			</section>

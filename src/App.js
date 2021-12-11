@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Header from "./components/Header/Header";
-import UploadPage from "./pages/UploadPage/UploadPage";
+import UploadPage from "./components/Upload/Upload";
 import VideoPage from "./pages/VideoPage/VideoPage";
 import PageNotFound from "./components/PageNotFound/PageNotFound";
 

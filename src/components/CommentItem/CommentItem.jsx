@@ -1,16 +1,11 @@
 import React from "react";
+import { format } from "../../helper/helper";
 import "./CommentItem.scss";
 
-const CommentItem = (props) => {
-	/* Formating the date */
-	const format = (date) => {
-		const formattedDate = new Date(date).toLocaleDateString();
-		return formattedDate;
-	};
-
+const CommentItem = ({ comments }) => {
 	return (
 		<div>
-			{props.comments.map((comment) => {
+			{comments.map((comment) => {
 				return (
 					<div className="comments-item" key={comment.name}>
 						<div className="comments-item__avatar"></div>

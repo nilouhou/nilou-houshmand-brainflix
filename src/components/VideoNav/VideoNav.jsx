@@ -4,8 +4,8 @@ import "./VideoNav.scss";
 
 const VideoNav = ({ videos }) => {
 	return (
-		<div className="videoList">
-			<h3 className="videoList__title">Next Videos</h3>
+		<div className="video-list">
+			<h3 className="video-list__title">Next Videos</h3>
 			<ul>
 				{videos.map((video) => {
 					return (
