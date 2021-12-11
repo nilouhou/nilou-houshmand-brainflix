@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Button from "../Button/Button";
 import thumbNail from "../../assets/images/Upload-video-preview.jpg";
 import "./Upload.scss";
 

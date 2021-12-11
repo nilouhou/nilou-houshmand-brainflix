@@ -9,7 +9,28 @@ class VideoPage extends React.Component {
 	state = {
 		videos: [],
 		selectedVideo: null,
+		comments: [],
 	};
+
+	formHandler(e, id) {
+		// e.persist();
+
+		let newComment = {
+			name: "Mohan Muruge",
+			comment: e.target.commentTextArea.value,
+		};
+
+		axios
+			.post(`${API_URL}/videos/${id}/comments${API_KEY}`, newComment)
+			.then((response) => {
+				console.log("post", response);
+			})
+			.catch((error) => {
+				console.error(error);
+			});
+
+		e.target.reset();
+	}
 
 	fetchVideoDetails(id) {
 		axios
@@ -69,7 +90,11 @@ class VideoPage extends React.Component {
 
 				<div className="flex-wrap">
 					{this.state.selectedVideo ? (
-						<VideoDetails selected={this.state.selectedVideo} />
+						<VideoDetails
+							selected={this.state.selectedVideo}
+							comments={this.state.comments}
+							formHandler={this.formHandler}
+						/>
 					) : (
 						<p>Loading...</p>
 					)}

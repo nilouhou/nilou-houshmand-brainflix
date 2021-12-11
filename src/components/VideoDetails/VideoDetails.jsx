@@ -8,7 +8,7 @@ import viewIcon from "../../assets/images/icons/views.svg";
 import likeIcon from "../../assets/images/icons/likes.svg";
 
 const VideoDetails = (props) => {
-	const { title, channel, description, views, likes, timestamp, comments } =
+	const { id, title, channel, description, views, likes, timestamp, comments } =
 		props.selected;
 
 	return (
@@ -34,7 +34,8 @@ const VideoDetails = (props) => {
 
 			<div className="video-details__form">
 				<h3>{comments.length} Comments</h3>
-				<Form />
+
+				<Form formHandler={props.formHandler} id={id} />
 			</div>
 			<div className="video-details__comments">
 				<CommentItem comments={comments} />

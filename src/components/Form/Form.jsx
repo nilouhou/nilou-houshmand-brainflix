@@ -3,13 +3,19 @@ import Button from "../Button/Button";
 import "./Form.scss";
 import avatar from "../../assets/images/Mohan-muruge.jpg";
 
-const Form = () => {
+const Form = (props) => {
+	console.log("props form", props);
+	const submitHandler = (e) => {
+		e.preventDefault();
+		props.formHandler(e, props.id);
+	};
+
 	return (
 		<div className="form-wrapper">
 			<div className="form-wrapper__avatar">
 				<img src={avatar} alt="mohan muruge" />
 			</div>
-			<form className="form">
+			<form className="form" onSubmit={submitHandler}>
 				<label className="form__label" htmlFor="commentTextArea">
 					Join the conversation
 					<textarea
@@ -25,7 +31,6 @@ const Form = () => {
 						cname="form__button primary-button"
 						text="comment"
 						type="submit"
-						disabled
 					/>
 				</div>
 			</form>
