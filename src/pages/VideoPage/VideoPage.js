@@ -12,14 +12,18 @@ class VideoPage extends React.Component {
 	};
 
 	fetchVideoDetails(id) {
-		axios.get(`${API_URL}/videos/${id}${API_KEY}`).then((response) =>
-			this.setState({
-				selectedVideo: response.data,
-			})
-		);
+		axios
+			.get(`${API_URL}/videos/${id}${API_KEY}`)
+			.then((response) =>
+				this.setState({
+					selectedVideo: response.data,
+				})
+			)
+			.catch((err) => console.log(err));
 	}
 
 	componentDidMount() {
+		const { videoId } = this.props.match.params.videoId;
 		axios
 			.get(`${API_URL}/videos${API_KEY}`)
 			.then((response) => {
@@ -32,16 +36,26 @@ class VideoPage extends React.Component {
 			.then((firstVideoId) => {
 				let videoToLoad;
 
-				this.props.match.params.videoId !== undefined
-					? (videoToLoad = this.props.match.params.videoId)
-					: (videoToLoad = firstVideoId);
+				videoId === undefined || !this.state.videos.includes(videoId)
+					? (videoToLoad = firstVideoId)
+					: (videoToLoad = this.props.match.params.videoId);
 
 				this.fetchVideoDetails(videoToLoad);
 			})
 			.catch((err) => console.log(err));
 	}
 
-	componentDidUpdate() {}
+	componentDidUpdate(prevProps) {
+		const { videoId } = this.props.match.params;
+		let videoToLoad;
+
+		if (videoId !== prevProps.match.params.videoId) {
+			if (videoId === undefined) {
+				videoToLoad = this.state.videos[0].id;
+			}
+			this.fetchVideoDetails(videoToLoad);
+		}
+	}
 
 	render() {
 		return (

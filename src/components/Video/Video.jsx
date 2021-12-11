@@ -2,7 +2,6 @@ import React from "react";
 import "./Video.scss";
 
 const Video = ({ selected }) => {
-	console.log("vid", { selected });
 	return (
 		<div className="video-container">
 			<video
