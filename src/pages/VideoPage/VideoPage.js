@@ -1,34 +1,47 @@
 import React from "react";
-
+import axios from "axios";
+import { API_KEY, API_URL } from "../../helper/apiUtil";
 import VideoNav from "../../components/VideoNav/VideoNav";
 import Video from "../../components/Video/Video";
 import VideoDetails from "../../components/VideoDetails/VideoDetails";
-import videoDetails from "../../data/video-details.json";
-import videosData from "../../data/videos.json";
 
 class VideoPage extends React.Component {
 	state = {
-		videos: videosData,
-		selectedVideo: videoDetails[0],
+		videos: [],
+		selectedVideo: null,
 	};
 
-	handleVideoSelect = (id) => {
-		this.setState({
-			selectedVideo: videoDetails.find((video) => video.id === id),
-		});
-	};
+	fetchMovieData() {
+		axios
+			.get(`${API_URL}/videos${API_KEY}`)
+			.then((response) =>
+				this.setState({
+					videos: response.data,
+				})
+			)
+			.catch((err) => console.log(err));
+	}
+
+	fetchMovieDetails(id) {
+		axios.get(`${API_URL}/${id}${API_KEY}`).then((response) =>
+			this.setState({
+				selectedVideo: response.data[0],
+			})
+		);
+	}
+
+	componentDidMount() {
+		this.fetchMovieData();
+	}
 
 	render() {
-		const filterNav = videosData.filter(
-			(video) => video.id !== this.state.selectedVideo.id
-		);
 		return (
 			<>
-				<Video selected={this.state.selectedVideo} />
+				{/* <Video /> */}
 				<div className="flex-wrap">
-					<VideoDetails selected={this.state.selectedVideo} />
-
-					<VideoNav videos={filterNav} onVideoSelect={this.handleVideoSelect} />
+					hi
+					{/* <VideoDetails />*/}
+					<VideoNav videos={this.state.videos} />
 				</div>
 			</>
 		);
