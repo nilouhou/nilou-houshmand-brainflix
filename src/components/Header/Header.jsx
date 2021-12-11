@@ -1,9 +1,9 @@
+import { Link } from "react-router-dom";
 import Button from "../Button/Button";
 import "./Header.scss";
 import logo from "../../assets/images/logo/brainflix-logo.svg";
 import avatar from "../../assets/images/Mohan-muruge.jpg";
 import searchIcon from "../../assets/images/icons/search.svg";
-import { Link } from "react-router-dom";
 
 const Header = () => {
 	return (
@@ -27,7 +27,9 @@ const Header = () => {
 					<div className="header__avatar">
 						<img src={avatar} alt="mohan muruge" />
 					</div>
-					<Button cname="header__button primary-button" text="UPLOAD" />
+					<Link to="/upload">
+						<Button cname="header__button primary-button" text="UPLOAD" />
+					</Link>
 				</div>
 			</section>
 		</>

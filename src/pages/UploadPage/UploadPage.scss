@@ -1,0 +1,18 @@
+/* Upload page Stylesheet*/
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins";
+
+.uploud {
+	border-top: 1px solid $secondary-medium;
+	padding: $mobile-gap;
+	@include mixins.tablet {
+		padding: $tablet-gap-outside;
+	}
+
+	&__wrapper {
+		@include mixins.flex-col;
+		@include mixins.tablet {
+			@include mixins.flex-row;
+		}
+	}
+}

@@ -23,7 +23,7 @@ class VideoPage extends React.Component {
 	}
 
 	componentDidMount() {
-		const { videoId } = this.props.match.params.videoId;
+		const { videoId } = this.props.match.params;
 		axios
 			.get(`${API_URL}/videos${API_KEY}`)
 			.then((response) => {
@@ -36,9 +36,9 @@ class VideoPage extends React.Component {
 			.then((firstVideoId) => {
 				let videoToLoad;
 
-				videoId === undefined || !this.state.videos.includes(videoId)
-					? (videoToLoad = firstVideoId)
-					: (videoToLoad = this.props.match.params.videoId);
+				videoId !== undefined
+					? (videoToLoad = videoId)
+					: (videoToLoad = firstVideoId);
 
 				this.fetchVideoDetails(videoToLoad);
 			})
@@ -50,9 +50,10 @@ class VideoPage extends React.Component {
 		let videoToLoad;
 
 		if (videoId !== prevProps.match.params.videoId) {
-			if (videoId === undefined) {
-				videoToLoad = this.state.videos[0].id;
-			}
+			videoId === undefined
+				? (videoToLoad = this.state.videos[0].id)
+				: (videoToLoad = videoId);
+
 			this.fetchVideoDetails(videoToLoad);
 		}
 	}
@@ -72,8 +73,12 @@ class VideoPage extends React.Component {
 					) : (
 						<p>Loading...</p>
 					)}
-					{this.state.videos.length ? (
-						<VideoNav videos={this.state.videos} />
+					{this.state.selectedVideo && this.state.videos.length ? (
+						<VideoNav
+							videos={this.state.videos.filter(
+								(video) => video.id !== this.state.selectedVideo.id
+							)}
+						/>
 					) : (
 						<p>Loading...</p>
 					)}
