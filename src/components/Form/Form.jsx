@@ -4,9 +4,9 @@ import "./Form.scss";
 import avatar from "../../assets/images/Mohan-muruge.jpg";
 
 const Form = (props) => {
-	console.log("props form", props);
 	const submitHandler = (e) => {
 		e.preventDefault();
+		e.persist();
 		props.formHandler(e, props.id);
 	};
 

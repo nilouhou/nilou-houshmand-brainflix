@@ -12,9 +12,20 @@ class VideoPage extends React.Component {
 		comments: [],
 	};
 
-	formHandler(e, id) {
-		// e.persist();
+	fetchVideoDetails = (id) => {
+		axios
+			.get(`${API_URL}/videos/${id}${API_KEY}`)
+			.then((response) =>
+				this.setState((prevState) => ({
+					...prevState,
+					selectedVideo: response.data,
+					comments: response.data.comments,
+				}))
+			)
+			.catch((err) => console.log(err));
+	};
 
+	formHandler(e, id) {
 		let newComment = {
 			name: "Mohan Muruge",
 			comment: e.target.commentTextArea.value,
@@ -22,25 +33,14 @@ class VideoPage extends React.Component {
 
 		axios
 			.post(`${API_URL}/videos/${id}/comments${API_KEY}`, newComment)
-			.then((response) => {
-				console.log("post", response);
+			.then((response) => () => {
+				this.fetchVideoDetails(response.data.id);
 			})
 			.catch((error) => {
 				console.error(error);
 			});
 
 		e.target.reset();
-	}
-
-	fetchVideoDetails(id) {
-		axios
-			.get(`${API_URL}/videos/${id}${API_KEY}`)
-			.then((response) =>
-				this.setState({
-					selectedVideo: response.data,
-				})
-			)
-			.catch((err) => console.log(err));
 	}
 
 	componentDidMount() {
@@ -92,7 +92,9 @@ class VideoPage extends React.Component {
 					{this.state.selectedVideo ? (
 						<VideoDetails
 							selected={this.state.selectedVideo}
-							comments={this.state.comments}
+							comments={this.state.comments.sort(
+								(a, b) => b.timestamp - a.timestamp
+							)}
 							formHandler={this.formHandler}
 						/>
 					) : (

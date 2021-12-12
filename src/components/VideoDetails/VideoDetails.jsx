@@ -33,12 +33,16 @@ const VideoDetails = (props) => {
 			<div className="video-details__summery">{description}</div>
 
 			<div className="video-details__form">
-				<h3>{comments.length} Comments</h3>
+				<h3>{comments !== undefined && comments.length} Comments</h3>
 
 				<Form formHandler={props.formHandler} id={id} />
 			</div>
 			<div className="video-details__comments">
-				<CommentItem comments={comments} />
+				{comments !== undefined ? (
+					<CommentItem comments={comments} />
+				) : (
+					<p>Loading....</p>
+				)}
 			</div>
 		</div>
 	);

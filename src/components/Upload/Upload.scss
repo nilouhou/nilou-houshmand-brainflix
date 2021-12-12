@@ -52,6 +52,7 @@
 		margin-top: $mobile-gap;
 		@include mixins.flex-column-center;
 		justify-content: space-between;
+		padding: 0 $mobile-gap;
 
 		@include mixins.tablet {
 			@include mixins.flex-row;
@@ -64,6 +65,9 @@
 	&__link {
 		color: $primary-cta;
 		margin-top: $mobile-gap;
+		@include mixins.tablet {
+			order: -1;
+		}
 	}
 }
 
