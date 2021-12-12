@@ -33,9 +33,7 @@ class VideoPage extends React.Component {
 
 		axios
 			.post(`${API_URL}/videos/${id}/comments${API_KEY}`, newComment)
-			.then((response) => () => {
-				this.fetchVideoDetails(response.data.id);
-			})
+			.then(() => this.fetchVideoDetails(this.state.selectedVideo.id))
 			.catch((error) => {
 				console.error(error);
 			});
@@ -95,7 +93,9 @@ class VideoPage extends React.Component {
 							comments={this.state.comments.sort(
 								(a, b) => b.timestamp - a.timestamp
 							)}
-							formHandler={this.formHandler}
+							formHandler={(e) =>
+								this.formHandler(e, this.state.selectedVideo.id)
+							}
 						/>
 					) : (
 						<p>Loading...</p>
