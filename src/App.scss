@@ -1,0 +1,12 @@
+@use "./styles/partials/global" as *;
+@use "./styles/partials/mixins";
+
+.flex-wrap {
+	display: flex;
+	flex-direction: column;
+	@include mixins.desktop {
+		@include mixins.flex-row;
+		max-width: 80%;
+		margin: 0 auto;
+	}
+}
