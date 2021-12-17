@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import { API_KEY, API_URL } from "../../helper/apiUtil";
+import { API_KEY, API_URL, API_URL_Server } from "../../helper/apiUtil";
 import VideoNav from "../../components/VideoNav/VideoNav";
 import Video from "../../components/Video/Video";
 import VideoDetails from "../../components/VideoDetails/VideoDetails";
@@ -14,7 +14,7 @@ class VideoPage extends React.Component {
 
 	fetchVideoDetails = (id) => {
 		axios
-			.get(`${API_URL}/videos/${id}${API_KEY}`)
+			.get(`${API_URL_Server}/videos/${id}`)
 			.then((response) =>
 				this.setState((prevState) => ({
 					...prevState,
@@ -44,9 +44,11 @@ class VideoPage extends React.Component {
 	componentDidMount() {
 		document.title = "BrainFlix";
 		const { videoId } = this.props.match.params;
+		console.log(API_URL_Server);
 		axios
-			.get(`${API_URL}/videos${API_KEY}`)
+			.get(`${API_URL_Server}/videos`)
 			.then((response) => {
+				console.log(response.data);
 				this.setState({
 					videos: response.data,
 				});
