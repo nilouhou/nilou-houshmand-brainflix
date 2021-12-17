@@ -15,7 +15,13 @@ class App extends React.Component {
 				<Switch>
 					<Route path="/" component={VideoPage} exact />
 					<Route path="/videos/:videoId" component={VideoPage} />
-					<Route path="/upload" component={UploadPage} />
+					<Route
+						path="/upload"
+						render={(routerProps) => {
+							console.log("Router Props:", routerProps);
+							return <UploadPage history={routerProps.history} />;
+						}}
+					/>
 					<Route component={PageNotFound} />
 				</Switch>
 			</BrowserRouter>

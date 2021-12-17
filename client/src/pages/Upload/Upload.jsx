@@ -2,8 +2,16 @@ import React from "react";
 import { Link } from "react-router-dom";
 import thumbNail from "../../assets/images/Upload-video-preview.jpg";
 import "./Upload.scss";
+import Button from "../../components/Button/Button";
 
-function Upload() {
+function Upload(props) {
+	console.log(props);
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		alert("Video Uploaded");
+		props.history.push("/");
+	};
+
 	return (
 		<div className="upload">
 			<h1 className="upload__title">Upload Video</h1>
@@ -14,7 +22,7 @@ function Upload() {
 					<img src={thumbNail} alt="Upload Video" />
 				</div>
 				<div className="upload__form">
-					<form className="form-upload">
+					<form className="form-upload" onSubmit={handleSubmit}>
 						<label className="form__label" htmlFor="title">
 							TITLE YOUR VIDEO
 						</label>
@@ -34,16 +42,14 @@ function Upload() {
 							id="description"
 							placeholder="Add a description to your video"
 						></textarea>
+						<div className="upload__links">
+							<Button cname="primary-button header__button" text="Publish" />
+							<Link to="/" className="upload__link">
+								Cancel
+							</Link>
+						</div>
 					</form>
 				</div>
-			</div>
-			<div className="upload__links">
-				<Link to="/" className="primary-button header__button">
-					Publish
-				</Link>
-				<Link to="/" className="upload__link">
-					Cancel
-				</Link>
 			</div>
 		</div>
 	);
