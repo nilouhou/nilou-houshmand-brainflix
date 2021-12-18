@@ -5,9 +5,31 @@ import "./Upload.scss";
 import Button from "../../components/Button/Button";
 
 function Upload(props) {
-	console.log(props);
+	//formRef = createRef();
+
+	//   handleUpload = (event) => {
+	//     event.preventDefault();
+
+	//     axios.post(
+	//       '/videos',
+	//       {
+	//         title: this.formRef.current.title.value,
+	//         channel: 'Mohan Muruge',
+	//         image: '../assets/images/upload-video-preview.jpg',
+	//         description: this.formRef.current.description.value
+	//       }
+	//     ).then(response => {
+	//       console.log(response);
+	//       return this.props.history.push(`/videos/${response.data.id}`)
+	//     })
+	//     .catch(err => {
+	//       console.log(err);
+	//     })
+	//   }
+
 	const handleSubmit = (e) => {
 		e.preventDefault();
+
 		alert("Video Uploaded");
 		props.history.push("/");
 	};

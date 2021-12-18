@@ -15,6 +15,21 @@ const writeFile = (videosData) => {
 router.get("/", (_req, res) => {
 	let videosData = readFile();
 
+	//Sending only data that nav component needs and eliminate rest from sending more data to frontend
+	videosData = videosData.map((vid) => {
+		const {
+			description,
+			views,
+			likes,
+			duration,
+			video,
+			timestamp,
+			comments,
+			...listKeys
+		} = vid;
+		return listKeys;
+	});
+
 	return res.status(200).send(videosData);
 });
 
