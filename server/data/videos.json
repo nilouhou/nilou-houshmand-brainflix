@@ -97,6 +97,12 @@
 				"comment": "Amazing footage of an amazing spot! It’s so inspiring to watch the sun rising over a landscape like this. I can only imagine how fresh the air must feel there on a snowy morning.",
 				"likes": 3,
 				"timestamp": 1623002522000
+			},
+			{
+				"id": "ab240c88-5abc-417f-ab13-b26dddf2b23e",
+				"name": "Mohan Muruge",
+				"comment": "nice music",
+				"timestamp": 1639950675621
 			}
 		],
 		"id": "25ce5d91-a262-4dcf-bb87-42b87546bcfa"
@@ -285,19 +291,5 @@
 			}
 		],
 		"id": "76ca28c0-7dea-4553-887f-8e5129a80fc3"
-	},
-
-	{
-		"id": "2bb54ddf-04d2-4dc7-8049-ee8df603aef1",
-		"title": "ola",
-		"channel": "Mohan Muruge",
-		"image": "/images/upload-video-preview.jpg",
-		"description": "test",
-		"views": 0,
-		"likes": 0,
-		"duration": "0:10",
-		"timestamp": 1639933057853,
-		"video": "https://project-2-api.herokuapp.com/stream",
-		"comments": []
 	}
 ]

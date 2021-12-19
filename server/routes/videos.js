@@ -107,26 +107,4 @@ router.post("/:videoId/comments", (req, res) => {
 	return res.status(201).json(newComment);
 });
 
-// //Delete Comments
-// router.delete("/videos/:videoId/comments/:commentId", (req, res) => {
-// 	const videosData = readFile();
-// 	// const filterComment = videosData.find(
-// 	// 	(comment) => comment.id === req.params.videoId.commentId
-// 	// );
-// 	console.log(filterComment);
-// 	console.log("id", req.params.videoId.commentId);
-
-// 	// if (!video) {
-// 	// 	return res.status(404).send("video not found");
-// 	// }
-// 	// const updatedVideo = video.comments;
-
-// 	// const newComment = updatedVideo.splice(
-// 	// 	updatedVideo.indexOf(filterComment),
-// 	// 	1
-// 	// );
-
-// 	return res.status(200).json();
-// });
-
 module.exports = router;

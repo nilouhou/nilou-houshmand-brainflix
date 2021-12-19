@@ -18,8 +18,7 @@ function Upload(props) {
 				description: e.target.description.value,
 			})
 			.then((res) => {
-				console.log(res);
-				// this.setState({ videos: res.data });
+				console.log("Thank you");
 			})
 			.catch((err) => {
 				console.log(err);
@@ -49,6 +48,7 @@ function Upload(props) {
 							name="title"
 							id="title"
 							placeholder="Add a title to your video"
+							required
 						/>
 						<label className="form__label" htmlFor="description">
 							ADD A VIDEO DESCRIPTION
@@ -58,6 +58,7 @@ function Upload(props) {
 							name="description"
 							id="description"
 							placeholder="Add a description to your video"
+							required
 						></textarea>
 						<div className="upload__links">
 							<Button cname="primary-button header__button" text="Publish" />
