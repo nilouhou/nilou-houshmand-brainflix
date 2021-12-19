@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import { API_KEY, API_URL, API_URL_Server } from "../../helper/apiUtil";
+import { API_URL_Server } from "../../helper/apiUtil";
 import VideoNav from "../../components/VideoNav/VideoNav";
 import Video from "../../components/Video/Video";
 import VideoDetails from "../../components/VideoDetails/VideoDetails";
@@ -32,7 +32,7 @@ class VideoPage extends React.Component {
 		};
 
 		axios
-			.post(`${API_URL}/videos/${id}/comments${API_KEY}`, newComment)
+			.post(`${API_URL_Server}/videos/${id}/comments`, newComment)
 			.then(() => this.fetchVideoDetails(this.state.selectedVideo.id))
 			.catch((error) => {
 				console.error(error);

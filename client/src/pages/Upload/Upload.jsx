@@ -3,32 +3,27 @@ import { Link } from "react-router-dom";
 import thumbNail from "../../assets/images/Upload-video-preview.jpg";
 import "./Upload.scss";
 import Button from "../../components/Button/Button";
+import { API_URL_Server } from "../../helper/apiUtil";
+import axios from "axios";
 
 function Upload(props) {
-	//formRef = createRef();
-
-	//   handleUpload = (event) => {
-	//     event.preventDefault();
-
-	//     axios.post(
-	//       '/videos',
-	//       {
-	//         title: this.formRef.current.title.value,
-	//         channel: 'Mohan Muruge',
-	//         image: '../assets/images/upload-video-preview.jpg',
-	//         description: this.formRef.current.description.value
-	//       }
-	//     ).then(response => {
-	//       console.log(response);
-	//       return this.props.history.push(`/videos/${response.data.id}`)
-	//     })
-	//     .catch(err => {
-	//       console.log(err);
-	//     })
-	//   }
-
 	const handleSubmit = (e) => {
 		e.preventDefault();
+
+		axios
+			.post(`${API_URL_Server}/videos`, {
+				title: e.target.title.value,
+				channel: "Mohan Muruge",
+				image: "/images/upload-video-preview.jpg",
+				description: e.target.description.value,
+			})
+			.then((res) => {
+				console.log(res);
+				// this.setState({ videos: res.data });
+			})
+			.catch((err) => {
+				console.log(err);
+			});
 
 		alert("Video Uploaded");
 		props.history.push("/");
